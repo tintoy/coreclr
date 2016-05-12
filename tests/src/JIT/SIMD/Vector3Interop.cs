@@ -396,13 +396,6 @@ class RPInvokeTest
     {
         // sum = (1, 2, 3) dot (1, 2, 3) = 14
         float sum0 = Vector3.Dot(v3f32_xmm0, v3f32_xmm0);   
-        
-        float sum1 = Vector3.Dot(v3f32_mem0, v3f32_mem0);       
-        result = sum0 == 14 && sum1 == 77;
-        
-        /*
-        // sum = (1, 2, 3) dot (1, 2, 3) = 14
-        float sum0 = Vector3.Dot(v3f32_xmm0, v3f32_xmm0);   
         // sum = (4, 5, 6) dot (4, 5, 6) = 77
         float sum1 = Vector3.Dot(v3f32_mem0, v3f32_mem0);       
         // sum = (7, 8, 9) dot (7, 8, 9) = 194
@@ -423,7 +416,6 @@ class RPInvokeTest
         Console.WriteLine("    Sum0,1,2,3,4,5 = {0}, {1}, {2}, {3}, {4}, {5}", sum0, sum1, sum2, sum3, sum4, sum5);
         
         result = (sum0 == 14) && (sum1 == 77) && (sum2 == 194) && (sum3 == 32) && (sum4 == 122) && (sum5 == 1045);
-        */
     }        
   
     //  Return test.
@@ -505,13 +497,7 @@ class RPInvokeTest
     
     public static bool test() {
         int x = 1;
-        nativeCall_RPInvoke_Vector3Arg_Unix2(callBack_RPInvoke_Vector3Arg_Unix2);
-        if (!result) 
-        {
-            //Console.WriteLine("RPInvoke Vector3Arg_Unix2 test failed");
-            return false;            
-        }        
-/*
+
         nativeCall_RPInvoke_Vector3Arg(callBack_RPInvoke_Vector3Arg);
         if (!result) 
         {
@@ -562,7 +548,6 @@ class RPInvokeTest
         }        
         
         Console.WriteLine("All RPInvoke testcases passed");
-        */
         return true;
     }     
 }
@@ -571,19 +556,16 @@ class Test
 {  
     public static int Main() 
     {
-/*
+
         if (!PInvokeTest.test()) 
         {
             return 101;
         }
-        */
         
         if (!RPInvokeTest.test()) 
         {
-            Console.WriteLine("Fail");
             return 101;
         }
-        Console.WriteLine("Pass");
         return 100;
     } 
 }

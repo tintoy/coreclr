@@ -281,7 +281,6 @@ protected:
                                                  RegState *regState);
     void                genEnregisterIncomingStackArgs();
     void                genCheckUseBlockInit();
-    void                genClearStackVec3ArgUpperBits();
 
 #if defined(_TARGET_ARM64_)
     bool                genInstrWithConstant(instruction ins,  

@@ -4887,48 +4887,6 @@ void            CodeGen::genFnPrologCalleeRegArgs(regNumber xtraReg,
 #ifdef _PREFAST_
 #pragma warning(pop)
 #endif
-/*****************************************************************************
-* If any Vector3 args are on stack and they are not pass-by-ref, the upper 32bits
-* must be cleared to zeroes.
-*/
-void    CodeGen::genClearStackVec3ArgUpperBits()
-{
-#ifdef DEBUG
-    if (verbose)
-        printf("*************** In genClearStackVec3ArgUpperBits()\n");
-#endif
-
-    assert(compiler->compGeneratingProlog);
-
-    unsigned varNum = 0;
-
-    for (LclVarDsc * varDsc = compiler->lvaTable;
-    varNum < compiler->lvaCount;
-        varNum++, varDsc++)
-    {
-        /* Is this variable a parameter? */
-
-        if (!varDsc->lvIsParam)
-            continue;
-
-        if (varDsc->lvIsRegArg || compiler->lvaIsImplicitByRefLocal(varNum))
-            continue;
-
-
-        //if (!VarSetOps::IsMember(compiler, compiler->fgFirstBB->bbLiveIn, varDsc->lvVarIndex))
-        //    continue;
-
-        getEmitter()->emitIns_S_I(
-            ins_Store(TYP_FLOAT),
-            EA_4BYTE,
-            varNum,
-            genTypeSize(TYP_FLOAT)*3,
-            0);
-    
-    }
-}
-
-
 
 /*****************************************************************************
  * If any incoming stack arguments live in registers, load them.
@@ -8429,7 +8387,7 @@ void                CodeGen::genFnProlog()
     //
     // This is the end of the OS-reported prolog for purposes of unwinding
     //
-    //--------------i-----------------------------------------------------------
+    //-------------------------------------------------------------------------
 
 #ifdef _TARGET_ARM_
     if  (needToEstablishFP)
@@ -8565,9 +8523,6 @@ void                CodeGen::genFnProlog()
         genPrologPadForReJit();
         getEmitter()->emitMarkPrologEnd();
     }
-
-
-    genClearStackVec3ArgUpperBits();
 
     /*-----------------------------------------------------------------------------
      * Take care of register arguments first

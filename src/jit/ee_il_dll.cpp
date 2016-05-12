@@ -283,12 +283,6 @@ CorJitResult CILJit::compileMethod (
 
     assert(methodInfo->ILCode);
 
-    const char* name = compHnd->getMethodName(methodInfo->ftn, nullptr);
-    if (strcmp(name, "callBack_RPInvoke_Vector3Arg_Unix2") == 0)
-    {
-        printf("*** Found %s\n", name);
-    }
-
     result = jitNativeCode(methodHandle,
                            methodInfo->scope,
                            compHnd,
