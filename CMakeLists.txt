@@ -573,7 +573,7 @@ add_definitions(-DFEATURE_ASYNC_IO)
 add_definitions(-DFEATURE_BCL_FORMATTING)
 add_definitions(-DFEATURE_COLLECTIBLE_TYPES)
 
-if(WIN32)
+if(FALSE)
     add_definitions(-DFEATURE_CLASSIC_COMINTEROP)
     add_definitions(-DFEATURE_APPX)
     add_definitions(-DFEATURE_COMINTEROP)

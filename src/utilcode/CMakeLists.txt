@@ -71,8 +71,7 @@ set(UTILCODE_SOURCES
 # They should be moved out from here into the declaration
 # of UTILCODE_SOURCES above after fixing compiler errors.
 if(WIN32)
-  list(APPEND UTILCODE_SOURCES 
-    appxutil.cpp
+  list(APPEND UTILCODE_SOURCES
     dlwrap.cpp
     downlevel.cpp
     loadrc.cpp

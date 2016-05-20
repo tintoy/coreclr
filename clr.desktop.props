@@ -19,7 +19,7 @@
     <FeatureClickonce>true</FeatureClickonce>
     <FeatureCodepagesFile>true</FeatureCodepagesFile>
     <FeatureCollectibleTypes>true</FeatureCollectibleTypes>
-    <FeatureCominterop>true</FeatureCominterop>
+    <FeatureCominterop>false</FeatureCominterop>
     <FeatureCominteropApartmentSupport>true</FeatureCominteropApartmentSupport>
     <FeatureCominteropManagedActivation>true</FeatureCominteropManagedActivation>
     <FeatureCominteropRegistration>true</FeatureCominteropRegistration>

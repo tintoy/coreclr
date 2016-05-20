@@ -9,6 +9,8 @@
 //
 //*****************************************************************************
 
+#define SetErrorInfo __DoNotUseSetErrorInfo
+
 #ifndef __UtilCode_h__
 #define __UtilCode_h__
 
